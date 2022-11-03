@@ -15,13 +15,11 @@ class _MovieDetailsState extends State<MovieDetails> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
   @override
   void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
     final movieId = ModalRoute.of(context)?.settings.arguments.toString();
     bloc.fetchMovieDetails(movieId!);
     super.didChangeDependencies();
