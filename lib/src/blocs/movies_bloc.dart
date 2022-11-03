@@ -38,7 +38,6 @@ class MoviesBloc {
           _movieDetails.sink.add(event.results[i]);
         }
       }
-
     });
 
   }
