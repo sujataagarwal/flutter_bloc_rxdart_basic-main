@@ -19,7 +19,12 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.purple,
             accentColor: Colors.deepOrange,
             errorColor: Colors.red,
-
+            snackBarTheme: SnackBarThemeData(
+              backgroundColor: Colors.purpleAccent,
+              elevation: 10,
+              contentTextStyle: TextStyle (color: Colors.black87, fontSize: 5),
+              actionTextColor: Colors.red,
+            ),
           ),
           home: App(),
           routes: {
