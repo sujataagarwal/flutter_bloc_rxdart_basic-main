@@ -1,4 +1,4 @@
-#Wed Nov 02 12:17:51 IST 2022
-base.0=/Users/nagababukollu/Downloads/poc_bloc/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+#Thu Nov 03 19:03:50 IST 2022
+base.0=/Users/nagababukollu/Documents/Development/flutter_bloc_rxdart_basic-main/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
