@@ -1,42 +1,14 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:poc_bloc/global.dart';
 
 class SnackBarDisplay {
-  final String message;
-
-  const SnackBarDisplay({
-    required this.message,
-  });
-
-  static buildSnackbar(BuildContext context, String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('$message', style: TextStyle(fontSize: 5, color: Colors.teal ), textAlign: TextAlign.center,),
-        backgroundColor: Colors.grey,
-        duration: Duration(seconds: 2),
-      ),
+  static buildSnackbar(String message, bool internetStatus) {
+    final SnackBar snackBar = SnackBar(
+      content: Text('$message', style: TextStyle(fontSize: 20, color: Colors.black ), textAlign: TextAlign.center,),
+      backgroundColor: internetStatus? Colors.greenAccent[700] : Colors.red[400],
+      duration: Duration(seconds: 2),
     );
+    snackBarKey.currentState?.showSnackBar(snackBar).close;
   }
-
-  // final String message;
-  // final GlobalKey<ScaffoldState> scaffoldKey;
-  //
-  //
-  // SnackBarDisplay(this.message, this.scaffoldKey);
-  // @override
-  // Widget build(BuildContext context) {
-  //   print('Message $message');
-  //   return   scaffoldKey.currentState.showSnackBar(
-  //       SnackBar(
-  //         content: const Text('Hi, I am a SnackBar!'),
-  //         backgroundColor: (Colors.black12),
-  //         action: SnackBarAction(
-  //           label: 'dismiss',
-  //           onPressed: () {},
-  //         ),
-  //       );
-  //
-  //
-  //   );
-  // }
 }

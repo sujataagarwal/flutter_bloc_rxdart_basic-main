@@ -6,51 +6,41 @@ import 'package:poc_bloc/src/utils/snackbar_display.dart';
 import 'blocs/connectivity_bloc.dart';
 import 'ui/movie_list.dart';
 
-
 class App extends StatefulWidget {
   @override
   State<App> createState() => _AppState();
 }
 
 class _AppState extends State<App> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  late AsyncSnapshot<ConnectivityResult> _source;
+  late String _message = '';
+  late bool _internetStatus = false;
 
-  late String message = '';
-
-  late bool internetStatus = false;
-
+  @override
   void initState() {
     super.initState();
-    connectivityBloc.CheckInternetConnection();
+    connectivityBloc.checkInternetConnection();
     connectivityBloc.internetStatus.listen((data) {
       switch (data)
       {
-        case ConnectivityResult.wifi: print ('Hello');
+        case ConnectivityResult.wifi:
         setState(() {
-          message = 'Internet Connect Restored';
-          internetStatus = true;
-
+          _message = 'Internet Connect Restored';
+          _internetStatus = true;
         });
         break;
-        case ConnectivityResult.none: print ('None');
+        case ConnectivityResult.none:
         setState(() {
-          message = 'No Internet Connection';
-          internetStatus = false;
+          _message = 'No Internet Connection';
+          _internetStatus = false;
         });
 
         break;
       }
       setState(() {});
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            message,
-            style: TextStyle(fontSize: 30),
-          ),
-        ),
-      );
+      SnackBarDisplay.buildSnackbar(_message, _internetStatus);
     });
+
+
   }
   @override
   Widget build(BuildContext context) {
@@ -62,22 +52,33 @@ class _AppState extends State<App> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Container(
-            child: TextButton(
-              child: Text(
-                'Get List of movies',
-                style: TextStyle(fontSize: 20,),
-                textAlign: TextAlign.center,
+          Column(
+            children: [
+              TextButton(
+                child: Text(
+                  'Get List of movies',
+                  style: TextStyle(fontSize: 20,),
+                  textAlign: TextAlign.center,
+                ),
+                onPressed: () {
+                  Navigator.of(context).pushNamed(MovieList.routeName);
+                },
               ),
-              onPressed: () {
-                Navigator.of(context).pushNamed(MovieList.routeName);
-              },
-            ),
+              TextButton(
+                child: Text(
+                  'Login Form',
+                  style: TextStyle(fontSize: 20,),
+                  textAlign: TextAlign.center,
+                ),
+                onPressed: () {
+                  Navigator.of(context).pushNamed(MovieList.routeName);
+                },
+              ),
+            ],
           ),
 
         ],
       ),
-
     );
   }
 }

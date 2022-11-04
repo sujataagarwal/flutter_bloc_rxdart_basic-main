@@ -16,7 +16,6 @@ class MoviesBloc {
 
   fetchAllMovies() async {
     ItemModel itemModel = await _repository.fetchAllMovies();
-    print('Result in Movie List to sink $itemModel');
     _moviesFetcher.sink.add(itemModel);
   }
 
@@ -26,6 +25,7 @@ class MoviesBloc {
   }
 
   dispose() {
+    print('Movie Bloc disposed');
     _moviesFetcher.close();
   }
 }
