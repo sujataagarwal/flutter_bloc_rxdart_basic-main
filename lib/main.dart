@@ -2,8 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:poc_bloc/src/app.dart';
-import 'package:poc_bloc/src/ui/movie_detail.dart';
-import 'package:poc_bloc/src/ui/movie_list.dart';
+import 'package:poc_bloc/src/login/ui/login_screen.dart';
+import 'package:poc_bloc/src/movies/ui/movie_detail.dart';
+import 'package:poc_bloc/src/movies/ui/movie_list.dart';
 import 'global.dart';
 import 'package:poc_bloc/src/utils/color.dart';
 
@@ -20,9 +21,10 @@ class MyApp extends StatelessWidget {
           title: 'Movie Data base',
           scaffoldMessengerKey: snackBarKey,
     theme: ThemeData(
-          primarySwatch: ColorUtils.PRIMARY_COLOR_DARK,
-          errorColor: ColorUtils.ERROR_COLOR,
-          snackBarTheme: const SnackBarThemeData(
+      primarySwatch: Colors.purple,
+      accentColor: Colors.deepOrange,
+      errorColor: Colors.red,
+      snackBarTheme: const SnackBarThemeData(
             backgroundColor: ColorUtils.WARNING_COLOR,
             elevation: 10,
             contentTextStyle: TextStyle (color: Colors.black, fontSize: 10),
@@ -32,7 +34,8 @@ class MyApp extends StatelessWidget {
           home: App(),
           routes: {
             MovieList.routeName: (context) => MovieList(),
-            MovieDetails.routeName: (context) => MovieDetails()
+            MovieDetails.routeName: (context) => MovieDetails(),
+            LoginScreen.routeName: (context) => LoginScreen()
           });
 
   }

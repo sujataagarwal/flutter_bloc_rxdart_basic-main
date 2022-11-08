@@ -1,7 +1,7 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
-import 'package:poc_bloc/src/ui/movie_detail.dart';
-import '../blocs/connectivity_bloc.dart';
+import 'package:poc_bloc/src/movies/ui/movie_detail.dart';
+import '../../common/blocs/connectivity_bloc.dart';
 import '../models/item_model.dart';
 import '../blocs/movies_bloc.dart';
 

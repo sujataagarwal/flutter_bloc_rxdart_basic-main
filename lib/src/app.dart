@@ -2,9 +2,10 @@
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:poc_bloc/src/login/ui/login_screen.dart';
 import 'package:poc_bloc/src/utils/snackbar_display.dart';
-import 'blocs/connectivity_bloc.dart';
-import 'ui/movie_list.dart';
+import 'common/blocs/connectivity_bloc.dart';
+import 'movies/ui/movie_list.dart';
 
 class App extends StatefulWidget {
   @override
@@ -71,12 +72,11 @@ class _AppState extends State<App> {
                   textAlign: TextAlign.center,
                 ),
                 onPressed: () {
-                  Navigator.of(context).pushNamed(MovieList.routeName);
+                  Navigator.of(context).pushNamed(LoginScreen.routeName);
                 },
               ),
             ],
           ),
-
         ],
       ),
     );
