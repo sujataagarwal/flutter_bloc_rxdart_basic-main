@@ -9,7 +9,7 @@ class ConnectivityBloc {
 
   //seedValue :ConnectionStatus.online
   // Default will be offline. This controller will help to emit new states when the connection changes.
-  final _controller = BehaviorSubject<ConnectivityResult>(seedValue: ConnectivityResult.none);
+  final _controller = BehaviorSubject<ConnectivityResult>.seeded(ConnectivityResult.none);
   StreamSubscription? _connectionSubscription;
 
   checkInternetConnection() {
@@ -19,7 +19,7 @@ class ConnectivityBloc {
   // The [ConnectionStatusValueNotifier] will subscribe to this
   // stream and everytime the connection status change it
   // will update it's value
-  Observable get internetStatus => _controller.stream;
+  Stream<ConnectivityResult> get internetStatus => _controller.stream;
 
   Future<void> _checkInternetConnection()
   async {

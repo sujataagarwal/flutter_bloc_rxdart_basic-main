@@ -12,9 +12,9 @@ class MoviesBloc {
   final _movieDetails = BehaviorSubject<Result>();
 
   // sends the list of all movies to UI
-  Observable<ItemModel> get allMovies => _moviesFetcher.stream;
+  Stream<ItemModel> get allMovies => _moviesFetcher.stream;
 
-  Observable<Result> get movieDetails => _movieDetails.stream;
+  Stream<Result> get movieDetails => _movieDetails.stream;
 
   fetchAllMovies() async {
     ItemModel itemModel = await _repository.fetchAllMovies();
