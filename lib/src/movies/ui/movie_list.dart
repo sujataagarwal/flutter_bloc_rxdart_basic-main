@@ -6,7 +6,7 @@ import '../models/item_model.dart';
 import '../blocs/movies_bloc.dart';
 
 class MovieList extends StatefulWidget {
-  static const routeName = '/movie_list';
+  get routeName =>  '/movie_list';
 
   @override
   State<MovieList> createState() => _MovieListState();
@@ -86,8 +86,7 @@ class _MovieListState extends State<MovieList> {
               fit: BoxFit.cover,
             ),
             onPressed: () {
-              Navigator.of(context).pushNamed(MovieDetails.routeName,
-                  arguments: movieList.results[index].id);
+              Navigator.of(context).pushNamed(MovieDetails().routeName, arguments: movieList.results[index].id);
             },
           );
         });

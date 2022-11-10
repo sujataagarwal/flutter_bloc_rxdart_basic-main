@@ -2,9 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:poc_bloc/src/app.dart';
-import 'package:poc_bloc/src/login/ui/login_screen.dart';
-import 'package:poc_bloc/src/movies/ui/movie_detail.dart';
-import 'package:poc_bloc/src/movies/ui/movie_list.dart';
 import 'global.dart';
 import 'package:poc_bloc/src/utils/color.dart';
 
@@ -32,11 +29,13 @@ class MyApp extends StatelessWidget {
           ),
         ),
           home: App(),
-          routes: {
-            MovieList.routeName: (context) => MovieList(),
-            MovieDetails.routeName: (context) => MovieDetails(),
-            LoginScreen.routeName: (context) => LoginScreen()
-          });
+          // routes: {
+          //   MovieList.routeName: (context) => MovieList(),
+          //   MovieDetails.routeName: (context) => MovieDetails(),
+          //   LoginScreen.routeName: (context) => LoginScreen(),
+          //   LocationScreen.routeName : (context) => LocationScreen(),
+          // }
+          );
 
   }
 }

@@ -2,6 +2,7 @@
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:poc_bloc/src/location/ui/location_screen.dart';
 import 'package:poc_bloc/src/login/ui/login_screen.dart';
 import 'package:poc_bloc/src/utils/snackbar_display.dart';
 import 'common/blocs/connectivity_bloc.dart';
@@ -36,9 +37,21 @@ class _AppState extends State<App> {
         });
 
         break;
+        case ConnectivityResult.bluetooth:
+          // TODO: Handle this case.
+          break;
+        case ConnectivityResult.ethernet:
+          // TODO: Handle this case.
+          break;
+        case ConnectivityResult.mobile:
+          // TODO: Handle this case.
+          break;
+        case ConnectivityResult.vpn:
+          // TODO: Handle this case.
+          break;
       }
       setState(() {});
-      SnackBarDisplay.buildSnackbar(_message, _internetStatus);
+      SnackBarDisplay.buildSnackBar(_message, _internetStatus);
     });
 
 
@@ -62,7 +75,7 @@ class _AppState extends State<App> {
                   textAlign: TextAlign.center,
                 ),
                 onPressed: () {
-                  Navigator.of(context).pushNamed(MovieList.routeName);
+                  Navigator.of(context).pushNamed(MovieList().routeName);
                 },
               ),
               TextButton(
@@ -72,7 +85,17 @@ class _AppState extends State<App> {
                   textAlign: TextAlign.center,
                 ),
                 onPressed: () {
-                  Navigator.of(context).pushNamed(LoginScreen.routeName);
+                  Navigator.of(context).pushNamed(LoginScreen().routeName);
+                },
+              ),
+              TextButton(
+                child: Text(
+                  'Location',
+                  style: TextStyle(fontSize: 20,),
+                  textAlign: TextAlign.center,
+                ),
+                onPressed: () {
+                  Navigator.of(context).pushNamed(LocationScreen().routeName);
                 },
               ),
             ],

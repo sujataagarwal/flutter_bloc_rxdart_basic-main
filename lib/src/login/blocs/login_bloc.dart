@@ -4,14 +4,14 @@ import 'package:rxdart/rxdart.dart';
 
 class LoginBloc
 {
-  final _loginIDController = BehaviorSubject<String>();
-  final _passwordController = BehaviorSubject<String>();
+  final _loginID = BehaviorSubject<String>();
+  final _password = BehaviorSubject<String>();
 
-  Stream<String> get loginId => _loginIDController.stream.transform(validateLoginID);
-  Stream<String> get password => _passwordController.stream.transform(validatePassword);
+  Stream<String> get loginId => _loginID.stream.transform(validateLoginID);
+  Stream<String> get password => _password.stream.transform(validatePassword);
 
-  Sink<String> get sinkLoginId => _loginIDController.sink;
-  Sink<String> get sinkPassword => _passwordController.sink;
+  Sink<String> get sinkLoginId => _loginID.sink;
+  Sink<String> get sinkPassword => _password.sink;
 
   //considering loginId will be email id
   final validateLoginID = StreamTransformer<String, String>.fromHandlers(handleData: (value, sink) {
@@ -38,8 +38,8 @@ class LoginBloc
 
 
   dispose() {
-    _loginIDController.close();
-    _passwordController.close();
+    _loginID.close();
+    _password.close();
   }
 }
 
