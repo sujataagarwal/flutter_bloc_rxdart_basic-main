@@ -75,7 +75,7 @@ class _AppState extends State<App> {
                   textAlign: TextAlign.center,
                 ),
                 onPressed: () {
-                  Navigator.of(context).pushNamed(MovieList().routeName);
+                  Navigator.of(context).pushNamed(MovieList.routeName);
                 },
               ),
               TextButton(
@@ -85,7 +85,7 @@ class _AppState extends State<App> {
                   textAlign: TextAlign.center,
                 ),
                 onPressed: () {
-                  Navigator.of(context).pushNamed(LoginScreen().routeName);
+                  Navigator.of(context).pushNamed(LoginScreen.routeName);
                 },
               ),
               TextButton(
@@ -95,7 +95,7 @@ class _AppState extends State<App> {
                   textAlign: TextAlign.center,
                 ),
                 onPressed: () {
-                  Navigator.of(context).pushNamed(LocationScreen().routeName);
+                  Navigator.of(context).pushNamed(LocationScreen.routeName);
                 },
               ),
             ],

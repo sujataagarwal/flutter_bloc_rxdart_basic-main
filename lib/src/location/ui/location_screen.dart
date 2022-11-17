@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'current_location_screen.dart';
+import 'current_location_status.dart';
 
 class LocationScreen extends StatelessWidget {
 
-  get routeName => '/location';
+  static const routeName = '/location';
 
   const LocationScreen({super.key});
   @override
@@ -29,10 +29,10 @@ class LocationScreen extends StatelessWidget {
               ],
             ),
           ),
-          body: const TabBarView(
+          body: TabBarView(
             children: [
-              CurrentLocationScreen(),
-              CurrentLocationScreen(),
+              CurrentLocationStatus(),
+              CurrentLocationStatus(),
             ],
           ),
         ));

@@ -6,7 +6,7 @@ import 'package:poc_bloc/src/movies/models/item_model.dart';
 import '../../common/blocs/connectivity_bloc.dart';
 
 class MovieDetails extends StatefulWidget {
-  get routeName => '/movie_details';
+  static const routeName = '/movie_details';
 
   const MovieDetails({Key? key}) : super(key: key);
 

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:poc_bloc/src/app.dart';
+import 'package:poc_bloc/src/utils/routes.dart';
 import 'global.dart';
 import 'package:poc_bloc/src/utils/color.dart';
 
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
           home: App(),
+          onGenerateRoute: CommonRoutes.generateRoutes,
           // routes: {
           //   MovieList.routeName: (context) => MovieList(),
           //   MovieDetails.routeName: (context) => MovieDetails(),

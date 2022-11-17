@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:poc_bloc/src/login/blocs/login_bloc.dart';
 
 class LoginScreen extends StatelessWidget {
-  get routeName => '/login-screen';
+  static const routeName = '/login-screen';
 
   final _passwordFocusNode = FocusNode();
   final _forgotPasswordFocusNode = FocusNode();
