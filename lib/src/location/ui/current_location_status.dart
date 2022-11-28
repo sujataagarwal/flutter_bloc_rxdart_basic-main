@@ -41,16 +41,11 @@ class _CurrentLocationStatusState extends State<CurrentLocationStatus> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _polyGeofenceService.addPolyGeofenceStatusChangeListener(
-          geofenceBloc.onPolyGeofenceStatusChanged);
-      _polyGeofenceService
-          .addLocationChangeListener(geofenceBloc.onLocationChanged);
-      _polyGeofenceService.addLocationServicesStatusChangeListener(
-          geofenceBloc.onLocationServicesStatusChanged);
+      _polyGeofenceService.addPolyGeofenceStatusChangeListener( geofenceBloc.onPolyGeofenceStatusChanged);
+      _polyGeofenceService.addLocationChangeListener(geofenceBloc.onLocationChanged);
+      _polyGeofenceService.addLocationServicesStatusChangeListener(geofenceBloc.onLocationServicesStatusChanged);
       _polyGeofenceService.addStreamErrorListener(geofenceBloc.onError);
-      _polyGeofenceService
-          .start(_polyGeofenceList)
-          .catchError(geofenceBloc.onError);
+      _polyGeofenceService.start(_polyGeofenceList).catchError(geofenceBloc.onError);
     });
   }
 
