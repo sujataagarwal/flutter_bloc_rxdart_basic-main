@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:poc_bloc/src/location/ui/easy_geofence.dart';
 
 import 'current_location_status.dart';
 
@@ -33,6 +34,8 @@ class LocationScreen extends StatelessWidget {
             children: [
               CurrentLocationStatus(),
               CurrentLocationStatus(),
+
+              // EasyGeofence(),
             ],
           ),
         ));
