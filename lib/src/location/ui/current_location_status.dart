@@ -11,53 +11,69 @@ class CurrentLocationStatus extends StatefulWidget {
 }
 
 class _CurrentLocationStatusState extends State<CurrentLocationStatus> {
-  final _polyGeofenceService = PolyGeofenceService.instance.setup(
-      interval: 5000,
-      accuracy: 100,
-      loiteringDelayMs: 60000,
-      statusChangeDelayMs: 10000,
-      allowMockLocations: false,
-      printDevLog: false);
-
-  // Create a [PolyGeofence] list.
-  final _polyGeofenceList = <PolyGeofence>[
-    PolyGeofence(
-      id: 'Park',
-      data: {
-        'address': 'Near Botanical Garden',
-        'about': '',
-      },
-      polygon: <LatLng>[
-        const LatLng(17.46159, 78.34296),
-        const LatLng(17.46182, 78.34264),
-        const LatLng(17.46171, 78.34330),
-        const LatLng(17.46158, 78.34360),
-        const LatLng(17.46137, 78.34353),
-      ],
-    ),
-  ];
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _polyGeofenceService.addPolyGeofenceStatusChangeListener( geofenceBloc.onPolyGeofenceStatusChanged);
-      _polyGeofenceService.addLocationChangeListener(geofenceBloc.onLocationChanged);
-      _polyGeofenceService.addLocationServicesStatusChangeListener(geofenceBloc.onLocationServicesStatusChanged);
-      _polyGeofenceService.addStreamErrorListener(geofenceBloc.onError);
-      _polyGeofenceService.start(_polyGeofenceList).catchError(geofenceBloc.onError);
-    });
+
   }
 
   @override
   Widget build(BuildContext context) {
+    String latitude = '0';
+    String longitude = '0';
+    bool _isFreshList = false;
+
     return StreamBuilder<Location>(
         stream: geofenceBloc.locationPoints,
         builder: (context, curPos) {
+
           if (curPos.data != null) {
             return SafeArea(
               child: ListView(children: <Widget>[
-                Container(
+                // Container(
+                //   alignment: Alignment.centerLeft,
+                //     margin: const EdgeInsets.symmetric(
+                //         vertical: 10, horizontal: 15),
+                //     child: TextFormField(
+                //       onChanged: (val) {latitude = val;
+                //       },
+                //       decoration: InputDecoration(
+                //           border: const OutlineInputBorder(),
+                //           labelText: 'Latitude',
+                //       ),
+                //       style: const TextStyle(
+                //           fontSize: 20, fontWeight: FontWeight.bold),
+                //     )
+                // ),
+                // Container(
+                //     alignment: Alignment.centerLeft,
+                //     margin: const EdgeInsets.symmetric(
+                //         vertical: 10, horizontal: 15),
+                //
+                //     child: TextFormField(
+                //       onChanged: (val) {
+                //         longitude = val;
+                //       },
+                //       decoration: InputDecoration(
+                //         border: const OutlineInputBorder(),
+                //         labelText: 'Longitude',
+                //       ),
+                //       style: const TextStyle(
+                //           fontSize: 20, fontWeight: FontWeight.bold),
+                //     )
+                // ),
+                // ElevatedButton(onPressed: (){
+                //   _polyGeofenceList[0].polygon.add(LatLng(
+                //       double.parse(latitude), double.parse(longitude)));
+                //
+                //   if (!_isFreshList) {
+                //
+                //     _polyGeofenceList[0].polygon.removeAt(0);
+                //       _isFreshList = true;
+                //   }
+                // }, child: Text(' Add Points')),
+                 Container(
                     alignment: Alignment.centerLeft,
                     margin: const EdgeInsets.symmetric(
                         vertical: 10, horizontal: 15),

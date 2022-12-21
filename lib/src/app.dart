@@ -2,12 +2,10 @@
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
-import 'package:poc_bloc/src/location/ui/location_screen.dart';
 import 'package:poc_bloc/src/login/ui/login_screen.dart';
-import 'package:poc_bloc/src/utils/notify_service.dart';
 import 'package:poc_bloc/src/utils/snack_bar_display.dart';
-import '../global.dart';
 import 'common/blocs/connectivity_bloc.dart';
+import 'location/ui/location_screen.dart';
 import 'movies/ui/movie_list.dart';
 
 class App extends StatefulWidget {
@@ -56,11 +54,9 @@ class _AppState extends State<App> {
       setState(() {});
       SnackBarDisplay.buildSnackBar(_message, _internetStatus);
     });
-    NotifyService.initialize(flutterLocalNotificationsPlugin);
-
+//    NotifyService.initialize(flutterLocalNotificationsPlugin);
+    //log.i('Initialise done in app');
     super.initState();
-
-
   }
   @override
   Widget build(BuildContext context) {
@@ -110,4 +106,5 @@ class _AppState extends State<App> {
       ),
     );
   }
+
 }

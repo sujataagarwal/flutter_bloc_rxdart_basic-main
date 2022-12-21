@@ -30,3 +30,10 @@ class Constants {
   static final ShapeBorder CARD_SHAPE =
   RoundedRectangleBorder(borderRadius: BorderRadius.circular(8));
 }
+
+
+class AndroidCall {
+  static const String PATH_LOCATION = 'pathLocationTrackingService';
+  static const String IS_TRACKING_ENABLED = 'isTrackingEnabled';
+  static const String SERVICE_BOUND = 'serviceBound';
+}

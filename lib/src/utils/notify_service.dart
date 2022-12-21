@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import '../../global.dart';
 
-class NotifyService
+class NotifyService extends ChangeNotifier
 {
   static Future initialize(FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
-    var androidInit = const AndroidInitializationSettings('mipmap/ic_launcher');
-    var iosInit = const DarwinInitializationSettings();
-    var initSettings = InitializationSettings(android: androidInit, iOS: iosInit);
+    var androidInitSettings = const AndroidInitializationSettings('mipmap/ic_launcher');
+    var iosInitSettings = const DarwinInitializationSettings();
+    final initSettings = InitializationSettings(android: androidInitSettings, iOS: iosInitSettings);
     await flutterLocalNotificationsPlugin.initialize(initSettings);
   }
 
@@ -23,6 +23,6 @@ class NotifyService
     var notificationDetails = NotificationDetails(
         android: channelSpecification, iOS: const DarwinNotificationDetails()
     );
-    await flutterLocalNotificationsPlugin.show(0, title, body, notificationDetails);
+    await flutterLocalNotificationsPlugin.show(0, title, body, notificationDetails, payload: 'Welcome');
   }
 }

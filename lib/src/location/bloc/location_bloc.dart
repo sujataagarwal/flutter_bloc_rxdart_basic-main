@@ -2,7 +2,7 @@ import 'package:geocoding/geocoding.dart';
 import 'package:rxdart/rxdart.dart';
 
 class LocationBloc {
-//  final position = BehaviorSubject<Position>();
+
   final address = BehaviorSubject<String>();
   fetchAddressFromLatLong(double lat, double lng) async {
     String currentAddress;
