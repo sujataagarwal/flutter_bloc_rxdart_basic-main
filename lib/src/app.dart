@@ -2,12 +2,12 @@
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_background_service/flutter_background_service.dart';
+import 'package:poc_bloc/src/location/ui/location_screen.dart';
 import 'package:poc_bloc/src/login/ui/login_screen.dart';
 import 'package:poc_bloc/src/utils/notify_service.dart';
 import 'package:poc_bloc/src/utils/snack_bar_display.dart';
+import '../global.dart';
 import 'common/blocs/connectivity_bloc.dart';
-import 'location/ui/location_screen.dart';
 import 'movies/ui/movie_list.dart';
 
 class App extends StatefulWidget {
@@ -17,14 +17,10 @@ class App extends StatefulWidget {
   State<App> createState() => _AppState();
 }
 
-class _AppState extends State<App> with WidgetsBindingObserver {
+class _AppState extends State<App> {
   late String _message = '';
   late bool _internetStatus = false;
 
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    print("StateChange $state");
-  }
   @override
   void initState() {
     connectivityBloc.checkInternetConnection();
@@ -60,11 +56,12 @@ class _AppState extends State<App> with WidgetsBindingObserver {
       setState(() {});
       SnackBarDisplay.buildSnackBar(_message, _internetStatus);
     });
+    NotifyService.initialize(flutterLocalNotificationsPlugin);
 
     super.initState();
+
+
   }
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -113,5 +110,4 @@ class _AppState extends State<App> with WidgetsBindingObserver {
       ),
     );
   }
-
 }
